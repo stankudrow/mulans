@@ -1,0 +1,40 @@
+[build-system]
+requires = ["uv_build>=0.13.0,<0.14.0"]
+build-backend = "uv_build"
+# https://docs.astral.sh/uv/concepts/build-backend/
+
+[project]
+name = "mulans"
+version = "0.1.0"
+description = "Multi-Language Translator"
+readme = "README.md"
+authors = [
+    { name = "Stanley Kudrow", email = "stankudrow@reply.no" }
+]
+requires-python = ">=3.12,<4"
+dependencies = [
+    "click~=8.5",
+    "ollama~=0.6",
+    "pydantic-settings~=2.16",
+]
+
+[tool.uv.build-backend]
+module-root = ""  # if "mulans" -> Expected a Python module at: mulans/mulans/__init__.py
+
+[dependency-groups]
+lint = [
+    "ruff~=0.17",
+    "ty==0.0.107",
+]
+
+[tool.ruff]
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+    "ASYNC",
+    "I"
+]
+ignore = []
+fixable = ["I"]
+unfixable = []
